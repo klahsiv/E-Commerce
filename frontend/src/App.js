@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import HomeScreen from "./screens/HomeSceen.js";
 import ProductScreen from "./screens/ProductScreen.js";
@@ -13,6 +13,9 @@ import { useContext } from "react";
 import { Store } from "./Store.js";
 import CartScreen from "./screens/CartScreen.js";
 import SignInScreen from "./screens/SignInScreen.js";
+import ShippingAddressSceen from "./screens/ShippingAddressSceen.js";
+import SignUpScreen from "./screens/SignUpScreen.js";
+import PaymentMethodScreen from "./screens/PaymentMethodScreen.js";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -21,6 +24,8 @@ function App() {
   const signoutHandler = () => {
     ctxDispatch({ type: 'USER_SIGNOUT' });
     localStorage.removeItem('userInfo');
+    localStorage.removeItem('shippingAddress');
+    localStorage.removeItem('paymentMethod');
   }
 
   return (
@@ -69,6 +74,9 @@ function App() {
               <Route path="/product/:slug" element={<ProductScreen />}></Route>
               <Route path="/cart" element={<CartScreen />}></Route>
               <Route path="/signin" element={<SignInScreen />}></Route>
+              <Route path="/signup" element={<SignUpScreen />}></Route>
+              <Route path="/shipping" element={<ShippingAddressSceen />}></Route>
+              <Route path="/payment" element={<PaymentMethodScreen />}></Route>
               <Route path="/" element={<HomeScreen />}></Route>
             </Routes>
           </Container>
