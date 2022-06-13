@@ -14,7 +14,7 @@ export default function ShippingAddressSceen() {
         cart: { shippingAddress }, 
     } = state;
 
-    const [fullname, setFullName] = useState(shippingAddress.fullname || '');
+    const [fullName, setFullName] = useState(shippingAddress.fullName || '');
     const [address, setAddress] = useState(shippingAddress.address || '');
     const [city, setCity] = useState(shippingAddress.city || '');
     const [postalCode, setPostalCode] = useState(shippingAddress.postalCode || '');
@@ -30,11 +30,11 @@ export default function ShippingAddressSceen() {
         e.preventDefault();
         ctxDispatch({
             type: 'SAVE_SHIPPING ADDRESS',
-            payload: { fullname, address, city, postalCode, country },
+            payload: { fullName, address, city, postalCode, country },
         });
         localStorage.setItem('shippingAddress',
             JSON.stringify({
-                fullname, address, city, postalCode, country,
+                fullName, address, city, postalCode, country,
             }));
         navigate('/payment');
     }
@@ -48,10 +48,10 @@ export default function ShippingAddressSceen() {
             <div className='container small-container'>
                 <h1 className="my-3">Shipping Address</h1>
                 <Form onSubmit={submitHandler}>
-                    <Form.Group className="mb-3" controlId="fullname">
+                    <Form.Group className="mb-3" controlId="fullName">
                         <Form.Label>Full Name</Form.Label>
                         <Form.Control
-                            value={fullname}
+                            value={fullName}
                             onChange={(e) => setFullName(e.target.value)}
                             required
                         />
